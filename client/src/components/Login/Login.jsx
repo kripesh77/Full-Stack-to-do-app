@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Toaster from "../Toaster/Toaster";
 import { useAuth } from "../../context/AuthContext";
-const API_URL = import.meta.env.VITE_API_URL;
 
 function Login() {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,7 +28,7 @@ function Login() {
 
     try {
       setIsLoading(true);
-      const res = await fetch(`${API_URL}/signin`, {
+      const res = await fetch(`https://to-do-app-sxge.onrender.com/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

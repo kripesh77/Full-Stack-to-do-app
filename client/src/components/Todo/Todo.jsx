@@ -3,7 +3,6 @@ import Toaster from "../Toaster/Toaster";
 import { useAuth } from "../../context/AuthContext";
 import TodoItem from "../TodoItem/TodoItem";
 import Loader from "../Loader/Loader";
-const API_URL = import.meta.env.VITE_API_URL;
 
 function Todo() {
   const { setIsAuthenticated } = useAuth();
@@ -16,7 +15,7 @@ function Todo() {
       async function dataFetch() {
         try {
           const token = JSON.parse(localStorage.getItem("token"));
-          const res = await fetch(`${API_URL}/todos`, {
+          const res = await fetch(`https://to-do-app-sxge.onrender.com/todos`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -53,7 +52,7 @@ function Todo() {
     try {
       setError("");
 
-      const res = await fetch(`${API_URL}/todo`, {
+      const res = await fetch(`https://to-do-app-sxge.onrender.com/todo`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,13 +78,16 @@ function Todo() {
 
   async function handleToggle(id) {
     try {
-      const res = await fetch(`${API_URL}/todo/${id}/toggle`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          token: JSON.parse(localStorage.getItem("token")),
-        },
-      });
+      const res = await fetch(
+        `https://to-do-app-sxge.onrender.com/todo/${id}/toggle`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            token: JSON.parse(localStorage.getItem("token")),
+          },
+        }
+      );
 
       if (!res.ok) throw new Error("Failed to toggle todo");
 
@@ -101,13 +103,16 @@ function Todo() {
 
   async function handleDelete(id) {
     try {
-      const res = await fetch(`${API_URL}/todo/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          token: JSON.parse(localStorage.getItem("token")),
-        },
-      });
+      const res = await fetch(
+        `https://to-do-app-sxge.onrender.com/todo/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            token: JSON.parse(localStorage.getItem("token")),
+          },
+        }
+      );
 
       if (!res.ok) throw new Error("Failed to delete todo");
 
@@ -119,14 +124,17 @@ function Todo() {
 
   async function handleUpdate(id, newDescription) {
     try {
-      const res = await fetch(`${API_URL}/todo/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          token: JSON.parse(localStorage.getItem("token")),
-        },
-        body: JSON.stringify({ description: newDescription }),
-      });
+      const res = await fetch(
+        `https://to-do-app-sxge.onrender.com/todo/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            token: JSON.parse(localStorage.getItem("token")),
+          },
+          body: JSON.stringify({ description: newDescription }),
+        }
+      );
 
       if (!res.ok) throw new Error("Failed to update todo");
 
