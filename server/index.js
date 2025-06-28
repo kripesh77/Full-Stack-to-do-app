@@ -12,7 +12,7 @@ const { z } = require("zod");
 const app = express();
 const path = require("path");
 
-app.use(express.static(path.join(__dirname, "./dist")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.use(express.json());
 
@@ -228,7 +228,7 @@ app.put("/todo/:id", authMiddleware, async (req, res) => {
 });
 
 app.get("/{*any}", (req, res) => {
-  res.sendFile(path.join(__dirname, "./dist/index.html"));
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
 //Due to asynchronous nature of js, we've to always connect to the database and then only start our server
