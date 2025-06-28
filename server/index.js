@@ -2,6 +2,8 @@ require("dotenv").config();
 const JWT_SECRET = process.env.JWT_SECRET;
 const MY_DATABASE_LINK = process.env.MY_DATABASE_LINK;
 
+const allowedOrigin = process.env.CORS_ORIGIN;
+
 const mongoose = require("mongoose");
 
 const express = require("express");
@@ -15,6 +17,12 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: allowedOrigin,
+  })
+);
 
 const { UserModel, TodoModel } = require("./db");
 const authMiddleware = require("./auth");
