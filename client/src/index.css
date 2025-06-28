@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+.neumorphism-link {
+  background: #e0e5ec;
+  border-radius: 10px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1),
+    -8px -8px 15px rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.neumorphism-link .text-container {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.neumorphism-link .arrow {
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.neumorphism-link:hover {
+  box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.15),
+    -12px -12px 20px rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.neumorphism-link:hover .arrow {
+  opacity: 1;
+  transform: translateX(8px);
+}
+
+.neumorphism-link:hover .text-container {
+  transform: translateX(-5px);
+}
+
+.neumorphism-link:active {
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.1),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.7);
+}

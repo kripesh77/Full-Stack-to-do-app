@@ -1,28 +1,55 @@
-# Todo App Backend (User-Based, Authenticated with JWT, WIP)
+# ✅ Full-Stack Todo App
 
-This is the backend for my Todo app — it’s still a work in progress, but I wanted to put it out there.
-
-## 🚀 Main idea:
-
-- Users can sign up and log in
-- Users can add their own todos
-- JWT implementation for stateless tokens and secure authentication
-- Use of MongoDB to store the users information
-- Basically to implement full stack todo app which is not limited to frontend.
+A clean full-stack Todo app with **React + Tailwind** on the frontend, **Express + JWT + bcrypt** on the backend and **MongoDB** for database
 
 ---
 
-## 🎯 What it does right now
+## 🔐 Features
 
-- Users can **sign up** and **sign in**
-- Authenticated users can **add todos** of their own
-- Authenticated users can **fetch their own todos** only
-- Handles some errors, like if the DB connection fails or if someone tries to sign up with an email that already exists
+- User Sign Up / Sign In
+- JWT-based authentication
+- Create, update, delete, and toggle todos
+- Only see your own todos (user-based)
+- Neumorphic, responsive UI with Tailwind
 
 ---
 
-## 😮‍💨 What I struggled with (and fixed, kinda)
+## 🛠 Tech Stack
 
-- Signing up with same email twice crashed my whole server — now I catch that with `try...catch` blocks
-- MongoDB connection errors sometimes happen (bad credentials, etc),so I made sure the HTTP server only starts **after** the database is connected
-- Learning JWT for authentication and `Authenticated EP` protection was a bit difficult task but it’s totally worth it.
+- **Frontend**: React (Vite) + Tailwind CSS
+- **Backend**: Node.js + Express.js
+- **Database**: MongoDB Atlas (via Mongoose)
+- **Auth**: JWT + bcrypt
+- **Deployment**: Render
+
+---
+
+## 📦 Getting Started
+
+```bash
+git clone https://github.com/kripesh77/fullstack-todo-app.git
+
+cd client
+npm install
+npm run build
+
+cd ../server
+npm install
+node index.js
+
+🔐 .env Configuration
+Create a .env file inside /server and add the following:
+
+JWT_SECRET=your_jwt_secret
+MY_DATABASE_LINK=your_mongodb_connection_string
+📁 Folder Structure
+fullstack-todo-app/
+├── client/   # React + Tailwind frontend
+└── server/   # Express + MongoDB backend
+🧠 Built With Learning In Mind
+This project started as a simple React frontend and grew into a full-stack app with real authentication, database interaction, and deployment.
+Still a work in progress — but built piece by piece, fix by fix.
+
+📄 License
+MIT — use it, modify it, learn from it.
+```

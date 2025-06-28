@@ -12,7 +12,6 @@ function authMiddleware(req, res, next) {
     if (err) {
       res.status(401).json("Incorrect credentials, Not authorized");
     } else if (decodedInfo) {
-      console.log(decodedInfo);
       req.userId = decodedInfo.userId;
       next();
     } else {
