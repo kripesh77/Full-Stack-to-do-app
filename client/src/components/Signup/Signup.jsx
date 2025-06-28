@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Toaster from "../Toaster/Toaster";
 import FloatingInput from "../../components/FloatingInput/FloatingInput";
+const API_URL = import.meta.env.VITE_API_URL;
 
 function Signup() {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,7 +39,7 @@ function Signup() {
 
     try {
       setIsLoading(true);
-      const res = await fetch("http://localhost:2000/signup", {
+      const res = await fetch(`${API_URL}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
