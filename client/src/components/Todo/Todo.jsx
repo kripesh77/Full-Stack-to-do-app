@@ -23,14 +23,12 @@ function Todo() {
             },
           });
           if (!res.ok) {
-            console.log(!res.ok);
             if (res.status === 401) {
               throw new Error("Unauthorized, please login");
             }
             throw new Error("Unexpected Error, please login");
           }
           const data = await res.json();
-          console.log(data);
           setTodos(data.todos);
         } catch (error) {
           setError("Error occured, please login again to continue!");
@@ -72,7 +70,6 @@ function Todo() {
       }
       throw new Error("Something went wrong !");
     } catch (error) {
-      console.log(error);
       setError("Failed to add, try again later!");
     } finally {
       setDescription("");
@@ -97,7 +94,6 @@ function Todo() {
         )
       );
     } catch (error) {
-      console.log(error);
       setError("Failed to mark as done/undone");
     }
   }
@@ -116,7 +112,6 @@ function Todo() {
 
       setTodos((todos) => todos.filter((todo) => todo.id !== id));
     } catch (error) {
-      console.log(error);
       setError("Failed to delete todo");
     }
   }
@@ -140,7 +135,6 @@ function Todo() {
         )
       );
     } catch (error) {
-      console.log(error);
       setError("Failed to update todo");
     }
   }
